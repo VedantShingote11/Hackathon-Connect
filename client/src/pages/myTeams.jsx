@@ -55,7 +55,7 @@ const MyTeams = () => {
                             </div>
 
                             <div className="mt-4">
-                                <Link to={'/chat'}>
+                                <Link to={`${item._id}`}>
                                     <button className="bg-blue-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-blue-700 transition-all duration-300 shadow-lg transform hover:scale-105">
                                         Chat
                                     </button>

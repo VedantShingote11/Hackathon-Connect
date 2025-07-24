@@ -24,9 +24,9 @@ const connectionSchema = new mongoose.Schema(
             trim: true,
             lowercase: true
         },
-        isAccepted: {
-            type: Boolean,
-            default: false
+        status: {
+            type: String,
+            default: "Send"
         }
     }, {
     timestamps: true

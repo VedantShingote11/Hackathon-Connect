@@ -64,6 +64,23 @@ export const deleteTeam = async (teamId) => {
     }
 }
 
+export const getTeam = async (chatId) => {
+    try {
+        const req = await fetch(`/api/team/${chatId}`);
+        if (!req.ok) {
+            return { success: false };
+        }
+
+        const res = await req.json();
+
+        return res;
+
+    } catch (error) {
+        console.log("Error while getting event details", error)
+        return { success: false };
+    }
+}
+
 
 
 

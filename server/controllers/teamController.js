@@ -40,3 +40,14 @@ export const deleteTeam = async (req, res) => {
     }
 }
 
+export const getTeam = async (req , res) => {
+    try {
+        const {chatId} = req.params;
+        const team = await Team.findById(chatId);
+
+        res.status(200).json({ success: true, data: team });
+    } catch (error) {
+        res.status(500).json({ success: false, error: 'Server error while getting team' });
+    }
+}
+

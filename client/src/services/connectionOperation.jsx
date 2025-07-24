@@ -36,7 +36,7 @@ export const search = async (query) => {
 export const invite = async (invitation) => {
     try {
         const send = await fetch('/api/connection', {
-            method: POST,
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },

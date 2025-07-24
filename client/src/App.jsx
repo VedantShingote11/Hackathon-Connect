@@ -11,6 +11,9 @@ import MyTeams from './pages/myTeams'
 import HackathonPage from './pages/HackathonPage'
 import EventDetails from './pages/EventDetails'
 import SearchPage from './pages/SearchPage'
+import HostHackathon from './pages/HostHackathon'
+import ProfilePage from './pages/ProfilePage'
+import ChatPage from './pages/ChatPage'
 
 const AppLayout = () => (
   <div>
@@ -39,6 +42,9 @@ function App() {
         <Route path='/hackathons' element={<HackathonPage/>}/>
         <Route path='/hackathons/:hackathonId' element={<EventDetails/>}/>
         <Route path='/search' element={<SearchPage/>}/>
+        <Route path='/host' element={<HostHackathon/>}/>
+        <Route path='/profile' element={<ProfilePage/>}/>
+        <Route path='/myTeams/:chatId' element={<ChatPage/>}/>
       </Route>
     </Routes>
   )

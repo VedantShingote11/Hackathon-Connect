@@ -4,7 +4,7 @@ const Card = ({imgUrl, heading, lastDate, mode, fee}) => {
     return (
         <div className="cursor-pointer h-[60vh] flex flex-col justify-center min-w-sm w-80 bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 gap-5 my-6">
             <img
-                src={imgUrl}
+                src={imgUrl.length !== 0 ? imgUrl : null}
                 alt={"Hackathon Image"}
                 className="w-full h-48 object-cover"
             />

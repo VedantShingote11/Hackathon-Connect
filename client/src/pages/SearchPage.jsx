@@ -32,12 +32,13 @@ const SearchPage = () => {
         const send = async (item) => {
 
             const request = {
-                senderId: currUser._id,
+                senderId: currUser?._id,
                 receiverId: item._id,
-                senderEmail: currUser.email,
+                senderEmail: currUser?.email,
                 receiverEmail: item.email,
-                isAccepted: false
+                status: "Send"
             }
+            console.log(request)
             const req = await invite(request);
 
             if (req.success) {
@@ -54,9 +55,8 @@ const SearchPage = () => {
             const email = user?.primaryEmailAddress?.emailAddress;
 
             const data = await getUser(email);
-
             if (data.success) {
-                setCurrUser(data.data);
+                setCurrUser(data.data[0]);
             }
             else {
                 console.log("Error while getting user");
@@ -110,9 +110,10 @@ const SearchPage = () => {
                                     <button className="bg-green-500 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-green-600 transition shadow-md">
                                         View Profile
                                     </button>
-
-                                    <Link ></Link>
-                                    <button onClick={() => sendInvite(item)} className="bg-green-500 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-green-600 transition shadow-md">
+                                    <button
+                                        onClick={() => sendInvite(item)}
+                                        className="bg-green-500 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-green-600 transition shadow-md disabled:opacity-50"
+                                    >
                                         Invite
                                     </button>
                                 </div>

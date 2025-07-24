@@ -17,7 +17,7 @@ const NavBar = () => {
                 <div className="flex items-center space-x-6">
 
                     <Link to={'/search'}>
-                        <button>
+                        <button className='cursor-pointer'>
                             <lord-icon
                                 src="https://cdn.lordicon.com/fkdzyfle.json"
                                 trigger="hover"
@@ -42,7 +42,7 @@ const NavBar = () => {
                         </span>
                     </Link>
 
-                    <Link>
+                    <Link to={'/host'}>
                         <button className="bg-blue-600 text-white px-5 py-2 rounded-full flex items-center gap-2 text-lg font-medium shadow-md transition transform hover:bg-blue-500 hover:scale-105">
                             <AiOutlinePlusCircle className="text-xl" />
                             Host Hackathon

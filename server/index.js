@@ -6,10 +6,11 @@ import connectionRoute from './routes/connectionRoute.js'
 import eventRoute from './routes/eventRoute.js';
 import searchRoute from './routes/searchRoute.js'
 import userRoute from './routes/userRoute.js'
+import messageRoute from './routes/messageRouter.js'
+import { app , server } from './services/socketService.js';
 
 connectDB();
 
-const app = express();
 const PORT = 5000;
 
 app.use(cors());
@@ -20,7 +21,8 @@ app.use('/api/connection', connectionRoute);
 app.use('/api/event', eventRoute);
 app.use('/api/search', searchRoute);
 app.use('/api/user', userRoute)
+app.use('/api/chat',messageRoute)
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
