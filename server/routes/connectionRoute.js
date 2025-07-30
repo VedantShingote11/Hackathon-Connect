@@ -1,9 +1,11 @@
 import express from 'express'
-import {getConnections, sendRequest} from '../controllers/connectionsOperation.js'
+import {acceptRequest, getConnections, getNotification, sendRequest} from '../controllers/connectionsOperation.js'
 
 const connectionRoute = express.Router();
 
 connectionRoute.get('/',getConnections);
+connectionRoute.get('/:userId' , getNotification)
 connectionRoute.post('/',sendRequest)
+connectionRoute.post('/accept' , acceptRequest)
 
 export default connectionRoute;

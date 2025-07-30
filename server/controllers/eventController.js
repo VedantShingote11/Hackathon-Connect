@@ -34,4 +34,3 @@ export const createEvent = async (req, res) => {
         res.status(500).json({ success: false, error: 'Server error creating event' });
     }
 }
-

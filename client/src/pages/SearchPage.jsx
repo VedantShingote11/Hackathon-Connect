@@ -3,6 +3,7 @@ import { search } from '../services/connectionOperation'
 import { useUser } from '@clerk/clerk-react'
 import { getUser } from '../services/userOperations'
 import { invite } from '../services/connectionOperation'
+import { Link } from 'react-router-dom';
 
 
 const SearchPage = () => {
@@ -107,9 +108,11 @@ const SearchPage = () => {
                                     <div className="text-sm font-medium">{item.skills && item.skills.length > 0 ? item.skills.join(", ") : "No skills listed"}</div>
                                 </div>
                                 <div className="flex gap-3">
-                                    <button className="bg-green-500 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-green-600 transition shadow-md">
-                                        View Profile
-                                    </button>
+                                    <Link to={`profile/${item.email}`}>
+                                        <button className="bg-green-500 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-green-600 transition shadow-md">
+                                            View Profile
+                                        </button>
+                                    </Link>
                                     <button
                                         onClick={() => sendInvite(item)}
                                         className="bg-green-500 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-green-600 transition shadow-md disabled:opacity-50"

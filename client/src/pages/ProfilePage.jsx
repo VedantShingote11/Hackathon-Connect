@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaGithub } from "react-icons/fa";
 import { getUser } from '../services/userOperations'
 import { useUser } from '@clerk/clerk-react'
+import { useParams } from "react-router-dom";
 
 const ProfilePage = () => {
     const { user, isLoaded } = useUser();
+    const { profileId } = useParams();
 
     const [editing, setEditing] = useState(false);
     const [userData, setUserData] = useState({
@@ -24,14 +26,21 @@ const ProfilePage = () => {
 
     useEffect(() => {
         const getData = async () => {
-            if (!user && !isLoaded) return;
 
-            const email = user?.primaryEmailAddress?.emailAddress;
+            var email = "";
 
+            if (!profileId) {
+                if (!user && !isLoaded) return;
+
+                email = user?.primaryEmailAddress?.emailAddress;
+            }
+            else {
+                email = profileId;
+            }
             const res = await getUser(email);
 
             if (res.success) {
-                setUserData(res.data);
+                setUserData(res.data[0]);
             }
         }
 
@@ -100,12 +109,12 @@ const ProfilePage = () => {
                     <div>
                         <h2 className="text-lg font-semibold text-gray-800">Achievements</h2>
                         <ul className="list-disc list-inside text-gray-700 mt-2 space-y-2">
-                            {(userData?.skills || []).map((skill, index) => (
+                            {(userData?.achievements || []).map((achievement, index) => (
                                 <span
                                     key={index}
                                     className="px-4 py-2 bg-blue-200 text-blue-800 rounded-lg text-sm shadow-sm"
                                 >
-                                    {skill}
+                                    {achievement}
                                 </span>
                             ))}
                         </ul>

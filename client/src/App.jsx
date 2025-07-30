@@ -14,13 +14,39 @@ import SearchPage from './pages/SearchPage'
 import HostHackathon from './pages/HostHackathon'
 import ProfilePage from './pages/ProfilePage'
 import ChatPage from './pages/ChatPage'
+import Notifications from './components/Notifications'
+import { useState } from 'react'
 
-const AppLayout = () => (
-  <div>
-    <NavBar />
-    <Outlet />
-  </div>
-);
+const AppLayout = () => {
+
+  const [showNotifications, setShowNotifications] = useState(false);
+
+  const toggleNotifications = () => {
+    setShowNotifications(prev => !prev);
+  };
+
+  return (
+
+    <div className='relative'>
+      <div className='sticky top-16'>
+        <div onClick={toggleNotifications} className='absolute top-4 right-3 cursor-pointer'>
+          <lord-icon
+            src="https://cdn.lordicon.com/lznlxwtc.json"
+            trigger="hover"
+            style={{ width: '30px', height: '30px' }}
+          />
+        </div>
+        {showNotifications && (
+          <div className="absolute mt-14 right-0 w-80 bg-white shadow-lg rounded-lg border p-3 z-50">
+            <Notifications />
+          </div>
+        )}
+      </div>
+      <NavBar />
+      <Outlet />
+    </div>
+  )
+};
 
 function App() {
   return (
@@ -39,12 +65,13 @@ function App() {
         <Route path='/dashboard' element={<DashboardPage />} />
         <Route path='/myTeams' element={<MyTeams />} />
         <Route path='/createTeam' element={<CreateTeam />} />
-        <Route path='/hackathons' element={<HackathonPage/>}/>
-        <Route path='/hackathons/:hackathonId' element={<EventDetails/>}/>
-        <Route path='/search' element={<SearchPage/>}/>
-        <Route path='/host' element={<HostHackathon/>}/>
-        <Route path='/profile' element={<ProfilePage/>}/>
-        <Route path='/myTeams/:chatId' element={<ChatPage/>}/>
+        <Route path='/hackathons' element={<HackathonPage />} />
+        <Route path='/hackathons/:hackathonId' element={<EventDetails />} />
+        <Route path='/search' element={<SearchPage />} />
+        <Route path='/host' element={<HostHackathon />} />
+        <Route path='/profile' element={<ProfilePage />} />
+        <Route path='/myTeams/:chatId' element={<ChatPage />} />
+        <Route path='search/profile/:profileId' element={<ProfilePage />} />
       </Route>
     </Routes>
   )
