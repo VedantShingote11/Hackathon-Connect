@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import dotenv from 'dotenv'
 import connectDB from './config/db.js'
 import teamRoute from './routes/teamRoute.js'
 import connectionRoute from './routes/connectionRoute.js'
@@ -8,6 +9,8 @@ import searchRoute from './routes/searchRoute.js'
 import userRoute from './routes/userRoute.js'
 import messageRoute from './routes/messageRouter.js'
 import { app , server } from './services/socketService.js';
+
+dotenv.config();
 
 connectDB();
 
