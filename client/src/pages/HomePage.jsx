@@ -1,7 +1,27 @@
 import { Link } from 'react-router-dom'
 import { SignedIn, SignedOut, UserButton } from '@clerk/clerk-react'
+import { useEffect, useState } from 'react'
+import { useUser } from '@clerk/clerk-react'
+import { saveUser } from '../services/userOperations'
 
 const HomePage = () => {
+
+    const { isLoaded, user } = useUser();
+
+    useEffect(() => {
+
+        const save = async () => {
+            const email = user?.primaryEmailAddress?.emailAddress;
+            const name = user?.fullName;
+
+            if(!email) return;
+
+            await saveUser(email, name);
+
+        }
+
+        save();
+    }, [isLoaded, user])
 
     return (
         <div className="h-full">
