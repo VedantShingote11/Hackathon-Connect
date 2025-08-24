@@ -13,7 +13,6 @@ const Notifications = () => {
             const email = user?.primaryEmailAddress?.emailAddress;
             const data = await getNotifications(email);
 
-            console.log(data.data);
             if (data.success) {
                 setNotifications(data.data);
             }
@@ -24,7 +23,7 @@ const Notifications = () => {
 
     const acceptInvitation = async (id) => {
         const data = await accept(id)
-        console.log(data)
+        
         if(data.success){
             setNotifications(
                 (prev) =>

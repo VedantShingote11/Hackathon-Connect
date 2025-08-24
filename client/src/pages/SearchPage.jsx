@@ -39,7 +39,6 @@ const SearchPage = () => {
                 receiverEmail: item.email,
                 status: "Send"
             }
-            console.log(request)
             const req = await invite(request);
 
             if (req.success) {
@@ -60,7 +59,7 @@ const SearchPage = () => {
                 setCurrUser(data.data[0]);
             }
             else {
-                console.log("Error while getting user");
+                alert("Error while getting user")
             }
         }
 

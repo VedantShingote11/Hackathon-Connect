@@ -5,12 +5,12 @@ import { Link } from 'react-router-dom'
 const MyTeams = () => {
 
     const [teams, setTeams] = useState([]);
+    const [teamId, setTeamId] = useState()
 
     useEffect(() => {
-        const fetchData = async() => {
+        const fetchData = async () => {
             const data = await getTeams();
 
-            console.log(data)
             if (data.success) {
                 setTeams(data.data);
             }
@@ -21,7 +21,7 @@ const MyTeams = () => {
 
     const handleDelete = async (id) => {
         const res = await deleteTeam(id)
-        if(res.success){
+        if (res.success) {
             setTeams(prevTeams => prevTeams.filter(team => team._id !== id));
         }
     }
@@ -38,7 +38,7 @@ const MyTeams = () => {
                     </div>
                 ) : (
                     teams.map((item, index) => (
-                        <div key={index} className="relative bg-white rounded-2xl shadow-lg border border-gray-200 p-6 transition-all transform hover:scale-105 hover:shadow-2xl duration-300">
+                        <div key={index} className="relative bg-white rounded-2xl shadow-lg border border-gray-200 p-6 transition-all transform hover:scale-105 hover:shadow-2xl duration-300 self-start">
                             <div className="flex justify-between items-center">
                                 <h2 className="text-xl font-bold text-blue-600">{item.teamName}</h2>
                                 <div onClick={() => handleDelete(item._id)} className="cursor-pointer text-red-500 hover:text-red-700 transform hover:scale-110 transition-all">
@@ -62,15 +62,21 @@ const MyTeams = () => {
                                 </Link>
                             </div>
 
-                            <Link to={'/teamDetails'}>
-                                <div className="absolute bottom-4 right-4 cursor-pointer hover:scale-110 transition-transform duration-300">
-                                    <lord-icon
-                                        src="https://cdn.lordicon.com/whtfgdfm.json"
-                                        trigger="hover"
-                                        style={{ width: "30px", height: "30px" }}
-                                    ></lord-icon>
+                            <div onClick={() => setTeamId(item._id)} className= {`${teamId === item._id ? "hidden" : ""} absolute bottom-4 right-4 cursor-pointer hover:scale-110 transition-transform duration-300`}>
+                                <lord-icon
+                                    src="https://cdn.lordicon.com/whtfgdfm.json"
+                                    trigger="hover"
+                                    style={{ width: "30px", height: "30px" }}
+                                ></lord-icon>
+                            </div>
+
+                            {item._id === teamId && (
+                                <div onClick={() =>{setTeamId("")}} className="flex flex-col gap-2 items-center mt-2 space-y-1 bg-gray-100 p-2 rounded">
+                                    {item.teamEmails.map((email, index) => (
+                                        <div key={index}>{email.split('@')[0]}</div>
+                                    ))}
                                 </div>
-                            </Link>
+                            )}
                         </div>
                     ))
                 )}

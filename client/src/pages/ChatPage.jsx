@@ -209,7 +209,6 @@ const ChatPage = () => {
     useEffect(() => {
         function onConnect() {
             setIsConnected(true);
-            console.log('Connected to socket server');
 
             // Join the chat room once connected
             if (chatId) {
@@ -219,11 +218,9 @@ const ChatPage = () => {
 
         function onDisconnect() {
             setIsConnected(false);
-            console.log('Disconnected from socket server');
         }
 
         function onReceiveMessage(message) {
-            console.log('Received message:', message);
             // Only add if not already in messages (avoid duplicates)
             setMessages(previous => {
                 const exists = previous.some(msg =>
@@ -238,7 +235,6 @@ const ChatPage = () => {
         }
 
         function onMessageHistory(messageHistory) {
-            console.log('Received message history:', messageHistory);
             setMessages(messageHistory);
         }
 

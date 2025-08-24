@@ -11,7 +11,6 @@ export const getConnections = async (email) => {
         return res;
 
     } catch (error) {
-        console.log("Error while getting connections", error)
         return { success: false };
     }
 }

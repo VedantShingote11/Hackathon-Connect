@@ -1,5 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Innovate from '../assets/Innovate.jpg'
+import Collaborate from '../assets/Collaborate.jpg'
+import Participate from '../assets/Participate.jpg'
 
 const DashboardPage = () => {
 
@@ -18,14 +21,14 @@ const DashboardPage = () => {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl">
                     <div className="bg-white p-6 rounded-xl shadow-xl border border-gray-200 transition-transform transform hover:scale-105 hover:shadow-2xl">
                         <img
-                            src=""
+                            src={Participate}
                             alt="Participate"
                             width="300"
                             height="200"
                             className="rounded-xl mb-4"
                         />
                         <h2 className="text-2xl font-semibold mb-2 text-indigo-600">
-                            🏆 Participate
+                            Participate
                         </h2>
                         <p className="text-gray-500">
                             Join premium hackathons and present your innovative solutions.
@@ -34,14 +37,14 @@ const DashboardPage = () => {
 
                     <div className="bg-white p-6 rounded-xl shadow-xl border border-gray-200 transition-transform transform hover:scale-105 hover:shadow-2xl">
                         <img
-                            src=""
+                            src={Collaborate}
                             alt="Collaborate"
                             width="300"
                             height="200"
                             className="rounded-xl mb-4"
                         />
                         <h2 className="text-2xl font-semibold mb-2 text-green-600">
-                            🤝 Collaborate
+                            Collaborate
                         </h2>
                         <p className="text-gray-500">
                             Connect with like-minded innovators and build powerful teams.
@@ -50,14 +53,14 @@ const DashboardPage = () => {
 
                     <div className="bg-white p-6 rounded-xl shadow-xl border border-gray-200 transition-transform transform hover:scale-105 hover:shadow-2xl">
                         <img
-                            src=""
+                            src={Innovate}
                             alt="Innovate"
                             width="300"
                             height="200"
                             className="rounded-xl mb-4"
                         />
                         <h2 className="text-2xl font-semibold mb-2 text-orange-600">
-                            🚀 Innovate
+                            Innovate
                         </h2>
                         <p className="text-gray-500">
                             Solve real-world problems by turning your ideas into reality.
@@ -68,7 +71,7 @@ const DashboardPage = () => {
                 <div className="mt-12 flex flex-wrap justify-center gap-4">
                     <Link to={'/hackathons'} >
                         <div className="bg-indigo-600 text-white px-6 py-3 rounded-lg text-lg font-bold shadow-lg hover:bg-indigo-500 transition-transform transform hover:scale-105">
-                            🔥Explore Hackathons
+                            Explore Hackathons
                         </div>
                     </Link>
                     <Link to={'/myTeams'} >

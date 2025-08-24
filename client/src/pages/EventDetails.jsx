@@ -20,7 +20,6 @@ const EventDetails = () => {
     }, [])
     
     useEffect(() => {
-        console.log(data.registrationLink);
     }, [data])
     
 
